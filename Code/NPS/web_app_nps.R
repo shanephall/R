@@ -11,6 +11,8 @@ nps_summary <- function()
   nps_chart(TRUE,d)
 }
 
+test <- c(1,0)
+
 load_nps_data <- function()
 {
   nps_data <<- read.csv(file=file.choose(),header=T) # load data from local CSV
