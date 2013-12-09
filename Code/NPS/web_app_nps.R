@@ -1,3 +1,13 @@
+# LOAD NPS DATA FROM CSV #
+ 
+load_nps_data <- function() 
+{
+  nps_data <<- read.csv(file=file.choose(),header=T) # load data from local CSV
+  nps_data$Date <<- as.Date(nps_data$Date) # convert date format
+  nps_data$Rating <<- as.numeric(nps_data$Rating) # convert rating format
+  return(nps_data)
+}
+
 nps_summary <- function()
 {
   par(mfrow=c(2,2))
@@ -9,16 +19,6 @@ nps_summary <- function()
   nps_chart(TRUE,b)
   nps_chart(TRUE,c)
   nps_chart(TRUE,d)
-}
-
-test <- c(1,0)
-
-load_nps_data <- function()
-{
-  nps_data <<- read.csv(file=file.choose(),header=T) # load data from local CSV
-  nps_data$Date <<- as.Date(nps_data$Date) # convert date format
-  nps_data$Rating <<- as.numeric(nps_data$Rating) # convert rating format
-  return(nps_data)
 }
 
 nps_score <- function(data)
